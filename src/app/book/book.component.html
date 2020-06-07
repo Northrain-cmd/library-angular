@@ -1,0 +1,13 @@
+<div class="card">
+    <button class="delete">x</button>
+    <h2>{{book.title}}</h2>
+    <h3>by {{book.author}}</h3>
+    <h4>{{book.pages}} pages</h4>
+    <div class="controls">
+        <button class="edit">Edit</button>
+        <button (click)= "changeReadStatus(book.title)" *ngIf="book.isRead; else notRead" class="isRead">Read</button>
+        <ng-template #notRead>
+            <button  (click)= "changeReadStatus(book.title)" class="isRead notRead">Not Read</button>
+        </ng-template>
+    </div>
+</div>
