@@ -10,25 +10,25 @@ import { BookService } from '../book.service';
 export class BookComponent implements OnInit {
   @Input() book;
   @Output() delete = new EventEmitter;
+  @Output() edit = new EventEmitter;
+  @Output() changeRead = new EventEmitter;
   editMode = false;
   constructor(private BookService:BookService) { }
   ngOnInit(): void {
   }
   changeReadStatus() {
-    this.book.isRead = ! this.book.isRead;
-    this.BookService.updateBook(this.book)
+   this.changeRead.emit(this.book);
   }
   deleteBook() {
     this.delete.emit(this.book);
   }
  
   onEdit(form) {
-    console.log(form.errors)
     this.editMode = ! this.editMode;
     this.book.title = form.title.value;
     this.book.author = form.author.value;
     this.book.pages = form.pages.value;
-    this.BookService.updateBook(this.book);
+    this.edit.emit(this.book)
   }
 
 }
