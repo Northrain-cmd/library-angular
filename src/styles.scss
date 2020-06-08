@@ -7,3 +7,9 @@ body {
      background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(243,94,131,1) 17.1%, rgba(236,212,80,1) 89.7% );
      
      }
+     button::-moz-focus-inner{
+         border: none;
+     }
+     button{
+        outline: none;
+     }

@@ -9,16 +9,19 @@ import { BookService } from '../book.service';
 export class BooksContainerComponent implements OnInit {
 
   constructor(private BookService:BookService) { }
-  books:any;
-  changeReadStatus(title) {
-    const newBook = this.books.find( book => book.title === title);
-    newBook.isRead = ! newBook.isRead;
-    this.BookService.updateBook(newBook);
-  }
+  books;
   ngOnInit(): void {
     this.BookService.getBooks().subscribe(books => {
       this.books = books;
     })
+  }
+  deleteBook(bookToDelete) {
+    this.BookService.deleteBook(bookToDelete).subscribe( books => this.books = books);
+    console.log(this.books)
+  }
+  onNewBook(form) {
+    this.BookService.addBook(form)
+    form.reset();
   }
 
 }

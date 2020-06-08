@@ -1,0 +1,19 @@
+    <div [hidden] = "! this.showForm" class="container">
+        <form #formDir = "ngForm" (keyup.enter) =" $event.target.blur(); bookForm.markAsUntouched()" (ngSubmit)="onSubmit()" [formGroup]="bookForm" class="container-form">
+            <span [hidden]="this.isUnique" class="error">This book is already in your library</span>
+            <label for="title">Title</label>
+            <span [hidden]="bookForm.controls.title.valid || bookForm.controls.title.untouched" class="error">Please enter a valid title</span>
+            <input  #title formControlName="title"  name="title" id="title" type="text">
+            <label for="author" id="author">Author</label>
+            <span [hidden]="bookForm.controls.author.valid || bookForm.controls.author.untouched" class="error">Please enter a valid name</span>
+            <input #author  formControlName="author"  name="author" type="text">
+            <label for="pages">Pages</label>
+            <span [hidden]="bookForm.controls.pages.valid || bookForm.controls.pages.untouched" class="error">Please enter a valid number</span>
+            <input  formControlName="pages"  name="pages"  id="pages" type="number">
+            <button [disabled]="! this.bookForm.valid" type="submit">Add</button>
+        </form>
+    </div>
+   
+<div class="toggle">
+    <button (click)="this.showForm=!this.showForm">+</button>
+</div>

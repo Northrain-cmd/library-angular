@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit($event.target)" #editForm = "ngForm">
+    <div class="form-group">
+        <span class="error" [hidden]="this.isUnique">This book is already in your Library</span>
+        <label for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="this.model.title"  minlength="2" class="form-control" id="title" required name="title" type="text">
+        <span class="error" [hidden]="title.valid || title.pristine">Please enter a valid title</span>
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input #author = "ngModel"  [(ngModel)]="this.model.author"   minlength="2" required name="author" id="author" class="form-control" type="text">
+        <span class="error" [hidden]="author.valid || author.pristine">Please enter a valid name</span>
+    </div>
+    <div class="form-group">
+        <label for="title">Pages</label>
+        <input #pages = "ngModel" [(ngModel)]="this.model.pages" required min="0"   minlength="1" class="form-control"   name="pages" id="pages" type="number">
+        <span class="error" [hidden]="pages.valid || pages.pristine">Please enter a valid number</span>
+    </div>
+    <button [disabled]="! editForm.form.valid" type="submit">Save</button>
+</form>

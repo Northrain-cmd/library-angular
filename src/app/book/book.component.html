@@ -1,13 +1,22 @@
 <div class="card">
-    <button class="delete">x</button>
-    <h2>{{book.title}}</h2>
-    <h3>by {{book.author}}</h3>
-    <h4>{{book.pages}} pages</h4>
-    <div class="controls">
-        <button class="edit">Edit</button>
-        <button (click)= "changeReadStatus(book.title)" *ngIf="book.isRead; else notRead" class="isRead">Read</button>
-        <ng-template #notRead>
-            <button  (click)= "changeReadStatus(book.title)" class="isRead notRead">Not Read</button>
-        </ng-template>
+    <button class="delete" (click)="deleteBook()">x</button>
+    <div  *ngIf="!editMode; else showEdit" class="info">
+        <h2>{{book.title}}</h2>
+        <h3>by {{book.author}}</h3>
+        <h4>{{book.pages}} pages</h4>
+        <div class="controls">
+            <button (click)="editMode=!editMode" class="edit">Edit</button>
+            <button (click)= "changeReadStatus()" *ngIf="book.isRead; else notRead" class="isRead">Read</button>
+        </div>
+            <ng-template #notRead>
+                <button  (click)= "changeReadStatus()" class="isRead notRead">Not Read</button>
+       
+            </ng-template>
+      
     </div>
+    <ng-template #showEdit>
+        <app-edit-book *ngIf = "book" (editSubmit)="onEdit($event)"  [book]="book"></app-edit-book>
+    </ng-template>
+    
+   
 </div>
