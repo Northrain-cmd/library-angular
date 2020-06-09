@@ -1,8 +1,5 @@
 .container{
-    position: fixed;
-    bottom:30%;
-    left: 42%;
-    right: 35%;
+    margin-top: 33%;
 }
 .container-form{
     display: flex;
@@ -36,20 +33,20 @@ label{
     justify-content: center;
     align-items: center;
     width: 8%;
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 50%;
     left: 50%;
     margin-bottom: 0.5%;
     $toggle-color:rgba(11, 100, 10, .7);
     button{
         background-color: initial;
         color: white;
-        background-color: $toggle-color;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid darkslategray;
+        border: 1px solid transparent;
         padding: 0.4rem 3rem;
         border-radius: 50%;
         font-size: 4.5rem;
@@ -88,13 +85,12 @@ input[type="number"] {
 
 @media only screen and (max-width:800px){
     .container{
-        left: 33%;
-        right: 27%;
+        margin-top: 25%;
     }
 }
 @media only screen and (max-width:450px){
     .container{
-        left: 5%;
-        right: 5%;
+        margin-top: 30%;
+
     }
 }

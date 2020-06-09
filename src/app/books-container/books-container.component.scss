@@ -1,9 +1,10 @@
 .wrapper{
     display: flex;
     flex-direction: column;
+    position:relative;
 }
 .container{
-    margin-top: 1%;
+    margin-top: 7%;
     margin-bottom: 2%;
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +16,10 @@
 .addBook{
     margin: 0 auto;
     width: 20%;
+    bottom: 0;
+    left:0;
+    right: 0;
+    position: relative;
 }
 @media only screen and (max-width:1100px){
     .container > *{
@@ -24,11 +29,19 @@
 @media only screen and (max-width:800px){
     .container > *{
         width: 33%;
+        margin-top: 5%;
+    }
+    .addBook{
+        width: 50%;
     }
 }
 @media only screen and (max-width:450px){
     .container > *{
         width: 50%;
+        margin-top: 15%;
+    }
+    .addBook{
+        width: 90%;
     }
 }
 @media only screen and (max-width:375px){
