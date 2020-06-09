@@ -14,24 +14,18 @@ export class BookService {
   getBooks ():Observable<{}[]> {
     return of(this.books)
   }
-  addBook(form) {
-    this.books = [ {
-      title: form.value.title,
-      author: form.value.author,
-      pages: form.value.pages,
-      isRead:false,
-      id: uuid(),
-    } , ...this.books];
+  addBook(newBook) {
+    this.books = [ newBook, ...this.books];
     console.log(this.books)
   }
   updateBook(updatedBook) {
-    let newBooks = this.books.map( book => {
+    console.log(updatedBook)
+    this.books = [...this.books.map( book => {
       if(book.id === updatedBook.id) {
         book = {...updatedBook};
       }
       return book;
-    })
-    this.books = [...newBooks];
+    })]
     console.log(this.books)
   }
   deleteBook(bookToDelete) {

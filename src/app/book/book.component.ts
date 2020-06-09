@@ -9,9 +9,9 @@ import { BookService } from '../book.service';
 
 export class BookComponent implements OnInit {
   @Input() book;
-  @Output() delete = new EventEmitter;
-  @Output() edit = new EventEmitter;
-  @Output() changeRead = new EventEmitter;
+  @Output() delete = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() changeRead = new EventEmitter();
   editMode = false;
   constructor(private BookService:BookService) { }
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class BookComponent implements OnInit {
     this.editMode = ! this.editMode;
     this.book.title = form.title.value;
     this.book.author = form.author.value;
-    this.book.pages = form.pages.value;
+    this.book.pages = form.pages.value.toString();
     this.edit.emit(this.book)
   }
 

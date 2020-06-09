@@ -8,7 +8,7 @@ import { BookService } from '../book.service';
   styleUrls: ['./add-book.component.scss']
 })
 export class AddBookComponent implements OnInit {
-  @Output() newBook = new EventEmitter;
+  @Output() newBook = new EventEmitter();
   bookForm = new FormGroup({
     title: new FormControl('',[
       Validators.required,

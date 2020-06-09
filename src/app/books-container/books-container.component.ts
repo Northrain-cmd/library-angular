@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-books-container',
@@ -20,19 +21,24 @@ export class BooksContainerComponent implements OnInit {
     this.books = [...this.books.filter(book => book.id !== bookToDelete.id )]
   }
   onNewBook(form) {
-    this.BookService.addBook(form);
-    this.books = [{
+    const tempBook = {
       title: form.value.title,
       author: form.value.author,
-      pages: form.value.pages,
+      pages: ""+form.value.pages,
       isRead:false,
-      id:this.books.length+1,
-    },...this.books];
+      id:uuid(),
+    }
+    this.BookService.addBook(tempBook);
+    this.books = [tempBook,...this.books];
     form.reset();
   }
   onEdit(book) {
-   let tempBook =  this.books.find(b => b.id === book.id);
-   tempBook = {...book};
+   this.books = [...this.books.map(b => {
+    if ( b.id === book.id ) {
+      b = {...book}
+    }
+    return b
+   } )];
    this.BookService.updateBook(book);
   }
   onChangeRead(b) {

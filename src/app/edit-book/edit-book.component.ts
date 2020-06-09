@@ -9,7 +9,7 @@ import { BookService } from '../book.service';
 export class EditBookComponent implements OnInit {
 
   @Input() book;
-  @Output() editSubmit = new EventEmitter;
+  @Output() editSubmit = new EventEmitter();
   model;
   isUnique = true;
   constructor(private BookService:BookService) { }
@@ -25,7 +25,6 @@ export class EditBookComponent implements OnInit {
       console.log(f.title.value);
       this.isUnique = true;
       this.editSubmit.emit(f);
-      f.reset();
      
 
     }  else {
@@ -35,7 +34,6 @@ export class EditBookComponent implements OnInit {
         console.log(f.title.value);
         this.isUnique = true;
         this.editSubmit.emit(f);
-        f.reset()
 
       }
      
