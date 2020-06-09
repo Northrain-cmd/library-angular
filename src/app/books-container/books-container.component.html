@@ -1,7 +1,8 @@
 <div class="wrapper">
-    <app-add-book (newBook)="onNewBook($event)"></app-add-book>
+    <app-add-book class="addBook" (newBook)="onNewBook($event)"></app-add-book>
     <div class="container">
-    <app-book (changeRead)="onChangeRead($event)" (edit)="onEdit($event)" (delete)="deleteBook($event)"  *ngFor="let book of books" [book]="book"></app-book>
+    <app-book (changeRead)="onChangeRead($event)" (edit)="onEdit($event)" (delete)="deleteBook($event)"
+      *ngFor="let book of this.BookService.books$ |async" [book]="book"></app-book>
     </div>
 </div>
 

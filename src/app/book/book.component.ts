@@ -13,10 +13,13 @@ export class BookComponent implements OnInit {
   @Output() edit = new EventEmitter();
   @Output() changeRead = new EventEmitter();
   editMode = false;
+  text;
   constructor(private BookService:BookService) { }
   ngOnInit(): void {
+    this.text = this.book.isRead ? 'Read' : 'Not Read';
   }
   changeReadStatus() {
+   this.book.isRead = ! this.book.isRead;
    this.changeRead.emit(this.book);
   }
   deleteBook() {

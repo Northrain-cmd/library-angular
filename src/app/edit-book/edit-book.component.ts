@@ -22,7 +22,6 @@ export class EditBookComponent implements OnInit {
   }
   onSubmit(f) {
     if(f.title.value === this.book.title && f.author.value === this.book.author) {
-      console.log(f.title.value);
       this.isUnique = true;
       this.editSubmit.emit(f);
      
@@ -31,7 +30,6 @@ export class EditBookComponent implements OnInit {
       if (this.BookService.checkIfBookExists(f.title.value,f.author.value)) {
         this.isUnique = false;
       } else {
-        console.log(f.title.value);
         this.isUnique = true;
         this.editSubmit.emit(f);
 
