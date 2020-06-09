@@ -1,7 +1,8 @@
 .container{
     position: fixed;
     bottom:30%;
-    left: 43%;
+    left: 42%;
+    right: 35%;
 }
 .container-form{
     display: flex;
@@ -10,9 +11,8 @@
     align-items: center;
     background-color: lightgrey ;
     color: darkslategray;
-    -webkit-box-shadow: 0px 0px 218px 20px rgba(0,0,0,1);
-    -moz-box-shadow: 0px 0px 218px 20px rgba(0,0,0,1);
-    box-shadow: 0px 0px 218px 20px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.26); 
+    box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.26);
     padding: 2%;
   
 }
@@ -41,14 +41,18 @@ label{
     bottom: 0;
     left: 50%;
     margin-bottom: 0.5%;
-    
+    $toggle-color:rgba(11, 100, 10, .7);
     button{
-        background-color: green;
+        background-color: initial;
         color: white;
-        border: none;
-        padding: 10% 25%;
+        background-color: $toggle-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid darkslategray;
+        padding: 0.4rem 3rem;
         border-radius: 50%;
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
 }
 
@@ -80,4 +84,17 @@ input[type="number"] {
     background-color: red;
     color: white;
     margin-top: 1%;
+}
+
+@media only screen and (max-width:800px){
+    .container{
+        left: 33%;
+        right: 27%;
+    }
+}
+@media only screen and (max-width:450px){
+    .container{
+        left: 5%;
+        right: 5%;
+    }
 }
