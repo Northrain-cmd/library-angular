@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <button id="logout" (click)="router.navigate(['logout'])">Logout</button>
     <app-add-book class="addBook" (newBook)="onNewBook($event)"></app-add-book>
     <div class="container">
     <app-book (changeRead)="onChangeRead($event)" (edit)="onEdit($event)" (delete)="deleteBook($event)"
