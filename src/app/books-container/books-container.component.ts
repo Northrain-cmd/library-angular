@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { v4 as uuid } from 'uuid';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-books-container',
@@ -10,10 +9,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./books-container.component.scss']
 })
 export class BooksContainerComponent implements OnInit {
-
-  constructor(public BookService:BookService, public router:Router, private authService:AuthService) { }
+  constructor(public BookService:BookService, public router:Router) { }
   books;
   ngOnInit(): void {
+    this.BookService.getUserBooks()
+   
   }
   deleteBook(bookToDelete) {
     this.BookService.deleteBook(bookToDelete);
