@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { v4 as uuid } from 'uuid';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-books-container',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class BooksContainerComponent implements OnInit {
 
-  constructor(public BookService:BookService, public router:Router) { }
+  constructor(public BookService:BookService, public router:Router, private authService:AuthService) { }
   books;
   ngOnInit(): void {
   }

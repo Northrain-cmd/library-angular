@@ -1,4 +1,7 @@
 <div>
-    <ngx-auth-firebaseui-user id="logout"></ngx-auth-firebaseui-user>
+    <ngx-auth-firebaseui-user id="logout" (onSignOut)="router.navigate([''])"
+    [canDeleteAccount]="false">
+    </ngx-auth-firebaseui-user>
+    <button (click)="router.navigate([''])">Go Back</button>
 </div>
 

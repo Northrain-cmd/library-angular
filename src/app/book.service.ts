@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { v4 as uuid } from 'uuid';
+import { AngularFirestore } from '@angular/fire/firestore'; 
+import { AuthService } from './auth.service'; 
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class BookService {
   addBook(newBook) {
     this.books$.next([ newBook, ...this.books$.getValue()]);
     console.log(this.books$.getValue());
+    this.db.doc(`users/${this.auth.uid}`).set({books:this.books$.getValue()},{merge:true}).then(() => console.log('Field Added'));
     localStorage.setItem('books',JSON.stringify(this.books$.getValue()));
   }
   updateBook(updatedBook) {
@@ -35,6 +38,6 @@ export class BookService {
     console.log(this.books$.getValue())
     return this.books$.getValue().find(book => book.title.trim().toLowerCase() === title.trim().toLowerCase() && book.author.trim().toLowerCase() === author.trim().toLowerCase()) ? true : false
   }
-  constructor() { 
+  constructor(private db:AngularFirestore, private auth: AuthService) { 
   }
 }
