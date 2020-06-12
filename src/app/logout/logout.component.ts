@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {BookService } from '../book.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,8 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-
-  constructor(public router: Router) { }
+  signOut() {
+    this.bookService.clearBooks();
+    this.router.navigate(['']);
+  }
+  constructor(public router: Router, private bookService: BookService ) { }
   ngOnInit(): void {
   }
 

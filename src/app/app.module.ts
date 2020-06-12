@@ -41,7 +41,7 @@ import { LogoutComponent } from './logout/logout.component';
     NgxAuthFirebaseUIModule.forRoot( environment.firebase,
       () => 'Library-Angular',
     {
-      enableFirestoreSync: true, // enable/disable autosync users with firestore
+      enableFirestoreSync: false, // enable/disable autosync users with firestore
       toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
       toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
       authGuardFallbackURL: '/login', // url for unauthenticated users - to use in combination with canActivate feature on a route

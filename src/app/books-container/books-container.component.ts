@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookService } from '../book.service';
 import { v4 as uuid } from 'uuid';
 import { Router } from '@angular/router';
@@ -6,14 +6,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-books-container',
   templateUrl: './books-container.component.html',
-  styleUrls: ['./books-container.component.scss']
+  styleUrls: ['./books-container.component.scss'],
 })
-export class BooksContainerComponent implements OnInit {
-  constructor(public BookService:BookService, public router:Router) { }
+export class BooksContainerComponent implements OnInit, OnDestroy {
+  constructor(public BookService: BookService, public router: Router) {}
   books;
   ngOnInit(): void {
-    this.BookService.getUserBooks()
-   
+    this.BookService.getUserBooks();
+  }
+  ngOnDestroy(): void{
   }
   deleteBook(bookToDelete) {
     this.BookService.deleteBook(bookToDelete);
@@ -22,19 +23,17 @@ export class BooksContainerComponent implements OnInit {
     const tempBook = {
       title: form.value.title,
       author: form.value.author,
-      pages: ""+form.value.pages,
-      isRead:false,
-      id:uuid(),
-    }
+      pages: '' + form.value.pages,
+      isRead: false,
+      id: uuid(),
+    };
     this.BookService.addBook(tempBook);
     form.reset();
   }
   onEdit(book) {
-   this.BookService.updateBook(book);
+    this.BookService.updateBook(book);
   }
   onChangeRead(b) {
     this.BookService.updateBook(b);
-    
   }
-
 }
